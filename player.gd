@@ -3,11 +3,11 @@ extends Area2D
 signal hit
 
 @export var speed= 600.0
-var scrsize= Vector2.ZERO 
+var scrsize #= Vector2.ZERO 
 
 func _ready():
 	scrsize = get_viewport_rect().size
-	hide()
+#	hide()
 
 func _process(delta):
 	var direction = Vector2.ZERO
@@ -22,7 +22,6 @@ func _process(delta):
 	
 	if direction.length() > 0:
 		direction = direction.normalized()
-		#get_node("AnimatedSprite2D").play()
 		$AnimatedSprite2D.play()
 	else:
 		$AnimatedSprite2D.stop() 
@@ -39,14 +38,14 @@ func _process(delta):
 		$AnimatedSprite2D.animation = "up"
 		$AnimatedSprite2D.flip_v= direction.y >0
 
-func start(new_position):
-	position= new_position
-	show()
-	$CollisionShape2D.disabled = false 
+#func start(new_position):
+#	position= new_position
+#	show()
+#	$CollisionShape2D.disabled = false 
 
-func _on_body_entered(body):
-	hide()
-	$CollisionShape2D.set_deferred("disabled", true)
-	emit_signal("hit")
+#func _on_body_entered(body):
+#	hide()
+#	$CollisionShape2D.set_deferred("disabled", true)
+#	emit_signal("hit")
 	
 	
